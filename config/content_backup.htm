@@ -1,5 +1,7 @@
 <h1>首頁</h1>
-<p>成員名單:尚未確認</p><h1>第一週</h1><h1>第二週</h1>
+<p>成員名單:尚未確認</p>
+<h1>第一週</h1>
+<h1>第二週</h1>
 <p>onshape 一個將工具放在網路上使用</p>
 <p>新的網站是可以使用https://localhost:9443但如果在其他環境下則需要自己去找IPV6的位置才能完成同步協調</p>
 <h1>第三週</h1>
@@ -7,7 +9,79 @@
 <p>1.acp.bat   add commit push 一次推完</p>
 <p>2.cms.bat  直接打開cmsimde</p>
 <p>以及一些cmsimde的更新以及教導如何更新cmsimde</p>
-<h1>此串會放置一些一般步驟</h1>
+<h1>第四週</h1>
+<p>這週開始進行分組活動並開始教導如何從網頁上的資料截下來並使用程式的方法,再來開始要進行個實驗室網站的時程</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import requests
+import bs4
+# for os.environ and os.system()
+import os
+# for geting html file path
+import pathlib
+ 
+# for pythn 3.9
+proxy = 'http://[2001:288:6004:17::69]:3128'
+ 
+os.environ['http_proxy'] = proxy 
+os.environ['HTTP_PROXY'] = proxy
+os.environ['https_proxy'] = proxy
+os.environ['HTTPS_PROXY'] = proxy
+ 
+'''
+url:  'class_ajax.php',
+data: { pselyr: pselyr, pselclss: pselclss
+'''
+semester = '1092'
+classno = '42311'
+column = True
+ 
+if semester == None:
+    semester = '1091'
+if classno == None:
+    # 42311 is 設一甲
+    classno = '42311'
+
+headers = {'X-Requested-With': 'XMLHttpRequest'}
+ 
+url = 'https://qry.nfu.edu.tw/class_ajax.php'
+post_var = {'pselyr': semester, 'pselclss': classno}
+ 
+result = requests.post(url, data = post_var, headers = headers)
+ 
+soup = bs4.BeautifulSoup(result.content, 'lxml')
+ 
+# 先除掉所有 anchor
+for a in soup.findAll('a'):
+    # bs3 語法
+    #a.replaceWithChildren()
+    # bs4 語法, 將標註與內容拆開
+    a.unwrap()
+ 
+# 根據輸出設定, 取出 class='tbcls' 的 table 資料
+table = soup.find('table', {'class': 'tbcls'})
+ 
+# 重建 table, 設定邊線為 1 pixel
+output = "&lt;table border='1'&gt;"
+ 
+for i in table.contents:
+    # 利用 replace 復原  
+    output += str(i).replace("&amp;nbsp", "   ")
+output += "&lt;/table&gt;"
+# print(output)
+# 將 output 寫入 w1_class_local.html
+with open("w1_class_local.html", "w", encoding="utf-8") as file:
+    file.write(output)
+# 利用 os.system() 以 default browser 開啟 w1_class_local.html
+filePath = pathlib.Path(__file__).parent.absolute()
+#print(filePath)
+# set firefox as default browser and start url to open html file
+os.system("start file:///" + str(filePath) + "\\w1_class_local.html")</pre>
+<p>在這之中其中有一行,是因為使用著習慣設定會在空白出現&amp;nbsp 而將那一行更改成</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"> output += str(i).replace("&amp;nbsp", "   ")</pre>
+<p>即可</p>
+<p>最後成品網頁</p>
+<p><img alt="" height="1039" src="/images/q1SEe0ppOA.png" width="1920"/></p>
+<p></p><h1>一般步驟放置區</h1>
+<p>此串會放置一些比較統一化的指令串</p>
 <h2>更新cmsimde的方法</h2>
 <p>1.先確認好最新的版本可從已作好的同學或老師的倉儲取的</p>
 <p>2.將目錄切換至cmsimde</p>
