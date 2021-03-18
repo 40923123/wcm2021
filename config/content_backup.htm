@@ -1,15 +1,18 @@
 <h1>首頁</h1>
 <p>成員名單:尚未確認</p>
-<h1>第一週</h1>
-<h1>第二週</h1>
+<h1>問題集中串</h1>
+<p>此串會將問題的時間以及解決過程紀錄出來</p>
+<h1>課程內容</h1>
+<h2>第一週</h2>
+<h2>第二週</h2>
 <p>onshape 一個將工具放在網路上使用</p>
 <p>新的網站是可以使用https://localhost:9443但如果在其他環境下則需要自己去找IPV6的位置才能完成同步協調</p>
-<h1>第三週</h1>
+<h2>第三週</h2>
 <p>老師將cmsimde更新兩個功能</p>
 <p>1.acp.bat   add commit push 一次推完</p>
 <p>2.cms.bat  直接打開cmsimde</p>
 <p>以及一些cmsimde的更新以及教導如何更新cmsimde</p>
-<h1>第四週</h1>
+<h2>第四週</h2>
 <p>這週開始進行分組活動並開始教導如何從網頁上的資料截下來並使用程式的方法,再來開始要進行個實驗室網站的時程</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import requests
 import bs4
@@ -76,11 +79,12 @@ filePath = pathlib.Path(__file__).parent.absolute()
 # set firefox as default browser and start url to open html file
 os.system("start file:///" + str(filePath) + "\\w1_class_local.html")</pre>
 <p>在這之中其中有一行,是因為使用著習慣設定會在空白出現&amp;nbsp 而將那一行更改成</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"> output += str(i).replace("&amp;nbsp", "   ")</pre>
+<p>output += str(i).replace("&amp;amp;nbsp", " &amp;nbsp; ")</p>
 <p>即可</p>
 <p>最後成品網頁</p>
 <p><img alt="" height="1039" src="/images/q1SEe0ppOA.png" width="1920"/></p>
-<p></p><h1>一般步驟放置區</h1>
+<p></p>
+<h1>一般步驟放置區</h1>
 <p>此串會放置一些比較統一化的指令串</p>
 <h2>更新cmsimde的方法</h2>
 <p>1.先確認好最新的版本可從已作好的同學或老師的倉儲取的</p>
