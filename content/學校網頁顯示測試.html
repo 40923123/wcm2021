@@ -1,0 +1,821 @@
+<!DOCTYPE html><html>
+        <head>
+        <title>CMSiMDE</title>
+        <meta charset="utf-8">
+<meta property="head" content="H1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/magnific-popup.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/jquery-ui.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/aos.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/style.css">
+        <link rel="shortcut icon" href="./../cmsimde/static/favicons.png">
+        
+        <style type='text/css'>
+            .site-section {
+            background-color: #FFFF;
+            padding: 40px 40px;
+            }
+            body > div > div.dropdown.open {
+                display: block;
+            }
+        </style>
+    
+        <!-- <script src="./../cmsimde/static/jquery.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/normalize.min.css">
+        <script src="./../cmsimde/static/tipuesearch/tipuesearch_set.js"></script>
+        <script src="tipuesearch_content.js"></script>
+        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/tipuesearch.css">
+        <script src="./../cmsimde/static/tipuesearch/tipuesearch.js"></script>
+        <script>
+            /* original tipuesearch
+            $(document).ready(function() {
+                 $('#tipue_search_input').tipuesearch();
+            });
+            */
+            // customed doSearch
+            function doSearch() {
+                $('#tipue_search_input').tipuesearch({
+                    newWindow: true, 
+                    minimumLength: 2,
+                    wholeWords: false, // for search 中文
+                });
+            }
+            $(document).ready(doSearch);
+        </script>
+        
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushBash.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDiff.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushHaxe.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDart.js"></script>
+<link type="text/css" rel="stylesheet" href="./../cmsimde/static/syntaxhighlighter/css/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<!-- 暫時不用
+<script src="./../cmsimde/static/fengari-web.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/Cango-13v08-min.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/CangoAxes-4v01-min.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/gearUtils-05.js"></script>
+-->
+<!-- for Brython 暫時不用
+<script src="https://scrum-3.github.io/web/brython/brython.js"></script>
+<script src="https://scrum-3.github.io/web/brython/brython_stdlib.js"></script>
+-->
+<style>
+img.add_border {
+    border: 3px solid blue;
+}
+</style>
+
+</head>
+<body>
+<div class='container'><nav>
+        
+    <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+            <header class="site-navbar py-4 bg-white" role="banner">
+              <div class="container-fluid">
+                <div class="row align-items-center">
+                <h1>40923123 wcm2021</h1>
+                <div class="pl-4">
+                    <form>
+                    <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
+                    </form>
+                </div>
+                  <!-- <div class="col-11 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">40923123 wcm2021</a></h1> 
+                  </div>
+                  -->
+                  <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+    <ul class='site-menu js-clone-nav mr-auto d-none d-lg-block'>
+                        <li class="active has-children"><a href="index.html">Home</a>
+                        <ul class="dropdown">
+                            <li><a href="sitemap.html">Site Map</a></li>
+                            <li><a href="./../reveal/index.html">reveal</a></li>
+                            <li><a href="./../blog/index.html">blog</a></li>
+                        </ul>
+                      </li>
+                     <li><a href='首頁.html'>首頁</a><li><a href='問題集中串.html'>問題集中串</a><li class='has-children'><a href='課程內容.html'>課程內容</a><ul class='dropdown'><li><a href='第一週.html'>第一週</a><li><a href='第二週.html'>第二週</a><li><a href='第三週.html'>第三週</a><li><a href='第四週.html'>第四週</a></li></ul><li class='has-children'><a href='一般步驟放置區.html'>一般步驟放置區</a><ul class='dropdown'><li><a href='建立SSH的方法 使用非設計系網路的環境下.html'>建立SSH的方法 使用非設計系網路的環境下</a><li><a href='更新cmsimde的方法.html'>更新cmsimde的方法</a><li><a href='打開網站的方法(搬運資料).html'>打開網站的方法(搬運資料)</a><li><a href='heroku 連結遠端方法.html'>heroku 連結遠端方法</a></li></ul><li><a href='學校網頁顯示測試.html'>學校網頁顯示測試</a></li>
+                      </ul>
+                </nav>
+              </div>
+              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+              </div>
+
+            </div>
+          </div>
+          
+        </header>
+    <div id="tipue_search_content">heroku 連結遠端方法 << <a href='heroku 連結遠端方法.html'>Previous</a> <br /><h1>學校網頁顯示測試</h1>
+<table border="1">
+<tbody>
+<tr>
+<td colspan="15"><center>國立虎尾科技大學 109 學年度第 2 學期<br/>四設計一甲 班級課表</center></td>
+</tr>
+<tr>
+<th rowspan="2" style="text-align: center;" width="6%">當期課號</th>
+<th rowspan="2" style="text-align: center;" width="13%">科目名稱</th>
+<th rowspan="2" style="text-align: center;" width="3%">選別</th>
+<th rowspan="2" style="text-align: center;" width="3%">學分數</th>
+<th rowspan="2" style="text-align: center;" width="3%">時數</th>
+<th rowspan="2" style="text-align: center;" width="8%">授課教師</th>
+<th colspan="7" style="text-align: center;" width="35%">每週上課節次</th>
+<th rowspan="2" style="text-align: center;" width="16%">地點</th>
+<th rowspan="2" style="text-align: center;" width="13%">備註</th>
+</tr>
+<tr>
+<th style="text-align: center;" width="5%">一</th>
+<th style="text-align: center;" width="5%">二</th>
+<th style="text-align: center;" width="5%">三</th>
+<th style="text-align: center;" width="5%">四</th>
+<th style="text-align: center;" width="5%">五</th>
+<th style="text-align: center;" width="5%">六</th>
+<th style="text-align: center;" width="5%">日</th>
+</tr>
+<tr>
+<td style="border-bottom: none;">0732</td>
+<td style="border-bottom: none;">通識教育講座</td>
+<td style="border-bottom: none;">必修</td>
+<td style="border-bottom: none;">1</td>
+<td style="border-bottom: none;">2</td>
+<td style="border-bottom: none;">李瑞麟</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;">7,8</p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p> </p>
+</td>
+<td>
+<p>學生活動中心 1F ASA0101 音樂廳</p>
+</td>
+<td>
+<p> </p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: none;">0733</td>
+<td style="border-bottom: none;">國文(二)</td>
+<td style="border-bottom: none;">必修</td>
+<td style="border-bottom: none;">2</td>
+<td style="border-bottom: none;">2</td>
+<td style="border-bottom: none;">薛榕婷</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;">7,8</p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p> </p>
+</td>
+<td>
+<p>一期大樓 2F ATA0201 普通教室</p>
+</td>
+<td>
+<p> </p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: none;">0734</td>
+<td style="border-bottom: none;">微積分(二)</td>
+<td style="border-bottom: none;">必修</td>
+<td style="border-bottom: none;">3</td>
+<td style="border-bottom: none;">3</td>
+<td style="border-bottom: none;">孫挺家</td>
+<td>
+<p style="word-break: break-all;">4,5,6</p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p> </p>
+</td>
+<td>
+<p>第二期教學大樓 3F ATB0302 普通教室</p>
+</td>
+<td>
+<p> </p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: none;">0735</td>
+<td style="border-bottom: none;">體育(二)</td>
+<td style="border-bottom: none;">必修</td>
+<td style="border-bottom: none;">0</td>
+<td style="border-bottom: none;">2</td>
+<td style="border-bottom: none;">洪櫻花</td>
+<td>
+<p style="word-break: break-all;">7,8</p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p> </p>
+</td>
+<td>
+<p>經國體育館 B1 CPGB101 PU綜合球場</p>
+</td>
+<td>
+<p> </p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: none;">0736</td>
+<td style="border-bottom: none;">服務學習(二)</td>
+<td style="border-bottom: none;">必修</td>
+<td style="border-bottom: none;">0</td>
+<td style="border-bottom: none;">2</td>
+<td style="border-bottom: none;">黃雅惠</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;">7,8</p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p> </p>
+</td>
+<td>
+<p>OAA0102 虛擬教室</p>
+</td>
+<td>
+<p>僅一年級可選修該門所屬班別課程，該班不提供給2-4年級之「重修生」及「轉學生」加選。</p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: none;">0737</td>
+<td style="border-bottom: none;">靜力學</td>
+<td style="border-bottom: none;">必修</td>
+<td style="border-bottom: none;">3</td>
+<td style="border-bottom: none;">3</td>
+<td style="border-bottom: none;">尤尚邦</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;">5</p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p> </p>
+</td>
+<td>
+<p>綜合工程一館 6F BGA0640 創意設計室</p>
+</td>
+<td>
+<p> </p>
+</td>
+</tr>
+<tr>
+<td style="border-top: none;"> </td>
+<td style="border-top: none;"> </td>
+<td style="border-top: none;"> </td>
+<td style="border-top: none;"> </td>
+<td style="border-top: none;"> </td>
+<td style="border-top: none;"> </td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;">3,4</p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p> </p>
+</td>
+<td>
+<p>綜合工程一館 7F BGA0710 研討室(二)</p>
+</td>
+<td>
+<p> </p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: none;">0738</td>
+<td style="border-bottom: none;">物理實驗</td>
+<td style="border-bottom: none;">必修</td>
+<td style="border-bottom: none;">1</td>
+<td style="border-bottom: none;">2</td>
+<td style="border-bottom: none;">林誠孝</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;">5,6</p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p> </p>
+</td>
+<td>
+<p>機械工程館 4F AME0412 物理實驗室(一)</p>
+</td>
+<td>
+<p> </p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: none;">0739</td>
+<td style="border-bottom: none;">工廠實習(二)CNC及CAM實習</td>
+<td style="border-bottom: none;">必修</td>
+<td style="border-bottom: none;">1</td>
+<td style="border-bottom: none;">3</td>
+<td style="border-bottom: none;">蕭俊卿</td>
+<td>
+<p style="word-break: break-all;">1,2,3</p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p> </p>
+</td>
+<td>
+<p>綜合工程一館 8F BGA0810 電腦輔助設計室</p>
+</td>
+<td>
+<p> </p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: none;">0740</td>
+<td style="border-bottom: none;">機械製圖(二)</td>
+<td style="border-bottom: none;">必修</td>
+<td style="border-bottom: none;">2</td>
+<td style="border-bottom: none;">4</td>
+<td style="border-bottom: none;">王培郁</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;">1,2,3,4</p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p> </p>
+</td>
+<td>
+<p>綜合工程一館 8F BGA0830 電腦輔助繪圖室</p>
+</td>
+<td>
+<p> </p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: none;">0741</td>
+<td style="border-bottom: none;">網際內容管理</td>
+<td style="border-bottom: none;">選修</td>
+<td style="border-bottom: none;">3</td>
+<td style="border-bottom: none;">3</td>
+<td style="border-bottom: none;">嚴家銘</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;">2,3,4</p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p> </p>
+</td>
+<td>
+<p>綜合工程一館 8F BGA0810 電腦輔助設計室</p>
+</td>
+<td>
+<p> </p>
+</td>
+</tr>
+<tr>
+<td style="border-bottom: none;">0742</td>
+<td style="border-bottom: none;">物理(二)</td>
+<td style="border-bottom: none;">必修</td>
+<td style="border-bottom: none;">3</td>
+<td style="border-bottom: none;">3</td>
+<td style="border-bottom: none;">林誠孝</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;">2</p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p style="word-break: break-all;">5,6</p>
+</td>
+<td>
+<p style="word-break: break-all;"> </p>
+</td>
+<td>
+<p> </p>
+</td>
+<td>
+<p>第二期教學大樓 1F ATB0101 普通教室</p>
+</td>
+<td>
+<p> </p>
+</td>
+</tr>
+<tr>
+<td>無</td>
+<td>體育(二)</td>
+<td>無</td>
+<td>無</td>
+<td>無</td>
+<td> </td>
+<td>7</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>無</td>
+<td>體育(二)</td>
+<td>無</td>
+<td>無</td>
+<td>無</td>
+<td> </td>
+<td>8</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>無</td>
+<td>英語聽講練習(二)</td>
+<td>無</td>
+<td>無</td>
+<td>無</td>
+<td> </td>
+<td> </td>
+<td>3</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>無</td>
+<td>英語聽講練習(二)</td>
+<td>無</td>
+<td>無</td>
+<td>無</td>
+<td> </td>
+<td> </td>
+<td>4</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>無</td>
+<td>通識</td>
+<td>無</td>
+<td>無</td>
+<td>無</td>
+<td> </td>
+<td> </td>
+<td>5</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>無</td>
+<td>通識</td>
+<td>無</td>
+<td>無</td>
+<td>無</td>
+<td> </td>
+<td> </td>
+<td>6</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>無</td>
+<td>服務學習</td>
+<td>無</td>
+<td>無</td>
+<td>無</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>7</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>無</td>
+<td>服務學習</td>
+<td>無</td>
+<td>無</td>
+<td>無</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>8</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>無</td>
+<td>班週會</td>
+<td>無</td>
+<td>無</td>
+<td>無</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>9</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>無</td>
+<td>通識講座</td>
+<td>無</td>
+<td>無</td>
+<td>無</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>7</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>無</td>
+<td>通識講座</td>
+<td>無</td>
+<td>無</td>
+<td>無</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>8</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table><br />heroku 連結遠端方法 << <a href='heroku 連結遠端方法.html'>Previous</a> </div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cmsimde/static/chimper/js/popper.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cmsimde/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        
