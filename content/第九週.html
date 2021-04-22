@@ -123,7 +123,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='首頁.html'>首頁</a><li><a href='問題集中串.html'>問題集中串</a><li class='has-children'><a href='課程內容.html'>課程內容</a><ul class='dropdown'><li><a href='第一週.html'>第一週</a><li><a href='第二週.html'>第二週</a><li><a href='第三週.html'>第三週</a><li><a href='第四週.html'>第四週</a><li><a href='期中報告.html'>期中報告</a></li></ul><li class='has-children'><a href='一般步驟放置區.html'>一般步驟放置區</a><ul class='dropdown'><li><a href='建立SSH的方法 使用非設計系網路的環境下.html'>建立SSH的方法 使用非設計系網路的環境下</a><li><a href='更新cmsimde的方法.html'>更新cmsimde的方法</a><li><a href='打開網站的方法(搬運資料).html'>打開網站的方法(搬運資料)</a><li><a href='heroku 連結遠端方法.html'>heroku 連結遠端方法</a></li></ul><li class='has-children'><a href='學校網頁顯示測試.html'>學校網頁顯示測試</a><ul class='dropdown'><li><a href='BGA0810.html'>BGA0810</a><li><a href='BGA0820.html'>BGA0820</a><li><a href='BGA0823.html'>BGA0823</a><li><a href='BGA0830.html'>BGA0830</a><li><a href='BGA0842.html'>BGA0842</a><li><a href='BGA0760.html'>BGA0760</a><li><a href='BGA0730.html'>BGA0730</a><li><a href='BGA0710使用時間.html'>BGA0710使用時間</a><li><a href='四設計一甲課程網站.html'>四設計一甲課程網站</a></li>
+                     <li><a href='首頁.html'>首頁</a><li><a href='問題集中串.html'>問題集中串</a><li class='has-children'><a href='課程內容.html'>課程內容</a><ul class='dropdown'><li><a href='第一週.html'>第一週</a><li><a href='第二週.html'>第二週</a><li><a href='第三週.html'>第三週</a><li><a href='第四週.html'>第四週</a><li><a href='第九週.html'>第九週</a></li></ul><li class='has-children'><a href='一般步驟放置區.html'>一般步驟放置區</a><ul class='dropdown'><li><a href='建立SSH的方法 使用非設計系網路的環境下.html'>建立SSH的方法 使用非設計系網路的環境下</a><li><a href='更新cmsimde的方法.html'>更新cmsimde的方法</a><li><a href='打開網站的方法(搬運資料).html'>打開網站的方法(搬運資料)</a><li><a href='heroku 連結遠端方法.html'>heroku 連結遠端方法</a></li></ul><li class='has-children'><a href='學校網頁顯示測試.html'>學校網頁顯示測試</a><ul class='dropdown'><li><a href='BGA0810.html'>BGA0810</a><li><a href='BGA0820.html'>BGA0820</a><li><a href='BGA0823.html'>BGA0823</a><li><a href='BGA0830.html'>BGA0830</a><li><a href='BGA0842.html'>BGA0842</a><li><a href='BGA0760.html'>BGA0760</a><li><a href='BGA0730.html'>BGA0730</a><li><a href='BGA0710使用時間.html'>BGA0710使用時間</a><li><a href='四設計一甲課程網站.html'>四設計一甲課程網站</a></li>
                       </ul>
                 </nav>
               </div>
@@ -134,7 +134,7 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">第四週 << <a href='第四週.html'>Previous</a> <a href='一般步驟放置區.html'>Next</a> >> 一般步驟放置區<br /><h1>期中報告</h1>
+    <div id="tipue_search_content">第四週 << <a href='第四週.html'>Previous</a> <a href='一般步驟放置區.html'>Next</a> >> 一般步驟放置區<br /><h1>第九週</h1>
 <p><img alt="" height="509" src="./../images/gcHJWCFwQy.png" width="976"/></p>
 <p><img alt="" height="1030" src="./../images/VD0Z0VLjCn.png" width="1920"/></p>
 <p></p>
@@ -149,9 +149,231 @@ img.add_border {
 <p>-------------------------------------------------------------------------------------------------------</p>
 <p><img alt="" height="480" src="./../images/cmd_yOFTyyfvB0.png" width="960"/></p>
 <p></p>
-<p></p>
-<p></p>
-<p></p>
+<p>第1版</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import requests
+import bs4
+# for os.environ and os.system()
+import os
+# for geting html file path
+import pathlib
+ 
+# for pythn 3.9
+'''
+proxy = 'http://[2001:288:6004:17::69]:3128'
+ 
+os.environ['http_proxy'] = proxy 
+os.environ['HTTP_PROXY'] = proxy
+os.environ['https_proxy'] = proxy
+os.environ['HTTPS_PROXY'] = proxy
+'''
+
+'''
+url:  'class_ajax.php',
+data: { pselyr: pselyr, pselclss: pselclss
+'''
+semester = '1092'
+classno = '42311'
+column = True
+ 
+if semester == None:
+    semester = '1091'
+if classno == None:
+    # 42311 is 設一甲
+    classno = '42311'
+
+headers = {'X-Requested-With': 'XMLHttpRequest'}
+ 
+url = 'https://qry.nfu.edu.tw/class_ajax.php'
+post_var = {'pselyr': semester, 'pselclss': classno}
+ 
+result = requests.post(url, data = post_var, headers = headers)
+ 
+soup = bs4.BeautifulSoup(result.content, 'lxml')
+ 
+# 先除掉所有 anchor
+for a in soup.findAll('a'):
+    # bs3 語法
+    #a.replaceWithChildren()
+    # bs4 語法, 將標註與內容拆開
+    a.unwrap()
+ 
+# 根據輸出設定, 取出 class='tbcls' 的 table 資料
+table = soup.find('table', {'class': 'tbcls'})
+ 
+# 重建 table, 設定邊線為 1 pixel
+output = "&lt;table border='1'&gt;"
+ 
+for i in table.contents:
+    # 利用 replace 復原  
+    output += str(i).replace("&amp;nbsp", "   ")
+output += "&lt;/table&gt;"
+# print(output)
+# 將 output 寫入 w1_class_local.html
+with open("w1_class_local.html", "w", encoding="utf-8") as file:
+    file.write(output)
+# 利用 os.system() 以 default browser 開啟 w1_class_local.html
+filePath = pathlib.Path(__file__).parent.absolute()
+#print(filePath)
+# set firefox as default browser and start url to open html file
+os.system("start file:///" + str(filePath) + "\\w1_class_local.html")</pre>
+<p>第2版</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import requests
+import bs4
+# for os.environ and os.system()
+import os
+# for geting html file path
+import pathlib
+ 
+# for pythn 3.9
+'''
+proxy = 'http://[2001:288:6004:17::69]:3128'
+ 
+os.environ['http_proxy'] = proxy 
+os.environ['HTTP_PROXY'] = proxy
+os.environ['https_proxy'] = proxy
+os.environ['HTTPS_PROXY'] = proxy
+'''
+
+'''
+url:  'class_ajax.php',
+data: { pselyr: pselyr, pselclss: pselclss
+'''
+semester = '1092'
+classno = 'BGA0842'
+column = True
+ 
+if semester == None:
+    semester = '1092'
+if classno == None:
+    # 42311 is 設一甲
+    classno = 'BGA0842'
+
+headers = {'X-Requested-With': 'XMLHttpRequest'}
+ 
+url = 'https://qry.nfu.edu.tw/classroom_ajax.php'
+post_var = {'pselyr': semester, 'pselclssroom': classno}
+ 
+result = requests.post(url, data = post_var, headers = headers)
+ 
+soup = bs4.BeautifulSoup(result.content, 'lxml')
+ 
+# 先除掉所有 anchor
+for a in soup.findAll('a'):
+    # bs3 語法
+    #a.replaceWithChildren()
+    # bs4 語法, 將標註與內容拆開
+    a.unwrap()
+ 
+# 根據輸出設定, 取出 class='tbcls' 的 table 資料
+table = soup.find('table', {'class': 'tbcls'})
+ 
+# 重建 table, 設定邊線為 1 pixel
+output = "&lt;table border='1'&gt;"
+ 
+for i in table.contents:
+    # 利用 replace 復原  
+    output += str(i).replace("&amp;nbsp", "   ")
+output += "&lt;/table&gt;"
+print(output)
+# 將 output 寫入 w1_class_local.html
+'''
+with open("w1_class_local.html", "w", encoding="utf-8") as file:
+    file.write(output)
+# 利用 os.system() 以 default browser 開啟 w1_class_local.html
+filePath = pathlib.Path(__file__).parent.absolute()
+#print(filePath)
+# set firefox as default browser and start url to open html file
+os.system("start file:///" + str(filePath) + "\\w1_class_local.html")
+'''</pre>
+<p>第三版</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import requests
+import bs4
+# for os.environ and os.system
+import os
+# for geting html file path
+import pathlib
+# 以下因應改為 Heroku based 程式所需導入模組,  修改步驟 1/6
+from flask import Flask, request 
+from flask_cors import CORS
+ 
+ 
+# 修改步驟 2/6 , 加入 Flask 相關物件設定
+app = Flask(__name__)
+# 此一設定可以讓程式跨網域擷取資料
+CORS(app)
+ 
+# for pythn 3.9,  在近端測試時仍需要設定 proxy, 若使用 Python 3.8 執行則會自動使用系統的 Proxy 設定
+proxy = 'http://[2001:288:6004:17::69]:3128'
+ 
+os.environ['http_proxy'] = proxy 
+os.environ['HTTP_PROXY'] = proxy
+os.environ['https_proxy'] = proxy
+os.environ['HTTPS_PROXY'] = proxy
+'''
+url:  'jclassroom_ajax.php',
+data: { pselyr: pselyr, pselclssroom: pselclssroom },
+'''
+ 
+# 修改步驟 3/6, 試著將程式改為網際模式, 需要套用 Flask 的網際 decorator
+@app.route('/')
+def timeTableList():
+    semester = '1092'
+    classroomno = 'BGA0810'
+    column = True
+ 
+    if semester == None:
+        semester = '1092'
+    if classroomno == None:
+        # BGA0810 電腦輔助設計室
+        classroomno = 'BGA0810'
+         
+    headers = {'X-Requested-With': 'XMLHttpRequest'}
+ 
+    url = 'https://qry.nfu.edu.tw/jclassroom_ajax.php'
+    post_var = {'pselyr': semester, 'pselclssroom': classroomno}
+ 
+    result = requests.post(url, data = post_var, headers = headers)
+ 
+    soup = bs4.BeautifulSoup(result.content, 'lxml')
+ 
+    # 先除掉所有 anchor
+    for a in soup.findAll('a'):
+        # bs3 語法
+        #a.replaceWithChildren()
+        # bs4 語法, 將標註與內容拆開
+        a.unwrap()
+ 
+    # 根據輸出設定, 取出 class='tbcls' 的 table 資料
+    table = soup.find('table', {'class': 'tbcls'})
+ 
+    # 重建 table, 設定邊線為 1 pixel
+    output = "&lt;table border='1'&gt;"
+ 
+    for i in table.contents:
+        # 利用 replace 復原  
+        output += str(i).replace(" ", " ")
+    output += "&lt;/table&gt;"
+    #print(output)
+    # 修改步驟 5/6 , 因為已經將原先可列印出程式的步驟改為 function, 因此必須以 return 將擷取到的網頁資料傳回
+    return output
+     
+# 修改步驟 4/6 , 因為改寫為網際程式後, 下列將內容存檔並自動呼叫 Firefox 的程式碼不再適用, 必須蓋掉
+'''
+# 將 output 寫入 w1_classroom.html
+fileName = "w1_classroom.html"
+with open(fileName, "w", encoding="utf-8") as file:
+    file.write(output)
+# 利用 os.system() 以 default browser 開啟 w1_class_local.html
+filePath = pathlib.Path(__file__).parent.absolute()
+#print(filePath)
+# set firefox as default browser and start url to open html file
+os.system("start file:///" + str(filePath) + "\\" + fileName)
+'''
+ 
+# 修改步驟 6/6, 配合網際程式啟動,  以及 Python 程式執行與納入其他程式執行的特定進行配置
+ 
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8080, debug=True)</pre>
 <p></p>
 <p></p>
 <p></p><br />第四週 << <a href='第四週.html'>Previous</a> <a href='一般步驟放置區.html'>Next</a> >> 一般步驟放置區</div>
